@@ -1,0 +1,38 @@
+{
+  "variantName": "columns-media",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-07-03T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.rmit.edu.au/",
+    "originPage": "RMIT University homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "feature",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "text column + image column side by side",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "text-plus-media promotional rows",
+      "featured story / call-to-action sections with a supporting image",
+      "acknowledgement or informational blocks with artwork beside text"
+    ],
+    "notSuitableFor": [
+      "grids of repeating card items",
+      "purely tabular data"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 3,
+    "lastUsed": "2026-07-03T00:00:00.000Z"
+  }
+}

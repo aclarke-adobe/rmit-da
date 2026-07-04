@@ -1,0 +1,109 @@
+/* cards-icons — "What would you like to study?" study-area grid.
+ * Design extracted from source .iconlistsvg (RMIT homepage). */
+
+/* Card container: white panel with a 4px red line across the top (source
+ * .iconlistsvg__wrapper border-top: 4px #e60028) and a navy corner ribbon. */
+.cards-icons {
+  position: relative;
+  border-top: 4px solid var(--rmit-red);
+  padding: 24px 24px 40px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.cards-icons > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+/* Navy corner ribbon (source .iconlistsvg__ribbon), pinned bottom-right. */
+.cards-icons .cards-icons-ribbon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 110px;
+  height: auto;
+  pointer-events: none;
+}
+
+/* Each study-area item: icon + label in a row.
+ * Source .iconlistsvg__section: flex row, padding 20px 16px 0, height 52px. */
+.cards-icons > ul > li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px 16px 0;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+/* Icon cell — source col-md-2 .iconlistsvg__section--svg: fixed 32px. */
+.cards-icons .cards-icons-card-icon {
+  flex: 0 0 32px;
+  width: 32px;
+  line-height: 0;
+}
+
+/* Source SVG icon is 32x32 with two-tone brand fills (#222160 navy, #E61E2A red). */
+.cards-icons .cards-icons-card-icon img,
+.cards-icons .cards-icons-card-icon picture,
+.cards-icons .cards-icons-card-icon svg {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+/* Label cell — source col-md-10 .iconlistsvg__section--text: padding-left 16px. */
+.cards-icons .cards-icons-card-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-left: 16px;
+}
+
+/* EDS wraps the label link in a <p>; remove default paragraph margins so the
+ * label aligns to the item's 20px top padding (matches source line-height 32px). */
+.cards-icons .cards-icons-card-body p {
+  margin: 0;
+}
+
+/* When the icon cell is empty (icons not present in imported content),
+ * drop the left padding so the label aligns to the item edge. */
+.cards-icons .cards-icons-card-icon:empty + .cards-icons-card-body {
+  padding-left: 0;
+}
+
+/* Label link — source: Arial 20px / 32px line-height, weight 400, color #333, no underline. */
+.cards-icons .cards-icons-card-body a {
+  display: inline;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+  color: #333;
+  text-decoration: none;
+}
+
+.cards-icons .cards-icons-card-body a:hover,
+.cards-icons .cards-icons-card-body a:focus-visible {
+  color: var(--rmit-red);
+  text-decoration: underline;
+}
+
+/* Tablet: 2 columns. */
+@media (width >= 600px) {
+  .cards-icons > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: 3 columns (source col-md-4 => 33.33%). */
+@media (width >= 900px) {
+  .cards-icons > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

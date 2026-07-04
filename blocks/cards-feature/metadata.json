@@ -1,0 +1,38 @@
+{
+  "variantName": "cards-feature",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-07-03T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.rmit.edu.au/",
+    "originPage": "RMIT University homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "feature",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "two/few promo cards (image + heading + description + CTA)",
+    "buttonCount": 2,
+    "imageCount": 2
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "promotional feature cards with imagery and CTA",
+      "pathway / transfer promo pairs",
+      "small sets of image-led highlight cards"
+    ],
+    "notSuitableFor": [
+      "dense icon-only navigation grids",
+      "statistic callout rows without descriptions"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-03T00:00:00.000Z"
+  }
+}

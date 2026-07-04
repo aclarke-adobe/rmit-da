@@ -1,0 +1,96 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.rmit.edu.au/"
+      ],
+      "representativeUrl": "https://www.rmit.edu.au/",
+      "coverageGaps": [],
+      "description": "RMIT university homepage: header/nav, hero banner with search, study-area icon grid, reputation/stats section, feature cards (transfer/pathways), text+media application CTA, in-the-news featured story, acknowledgement of country, and footer with megamenu.",
+      "blocks": [
+        {
+          "name": "hero-search",
+          "instances": [".hero-home"]
+        },
+        {
+          "name": "cards-icons",
+          "instances": [".iconlistsvg"]
+        },
+        {
+          "name": "cards-stats",
+          "instances": [".iconfeature"]
+        },
+        {
+          "name": "cards-feature",
+          "instances": [".generic-gridlist"]
+        },
+        {
+          "name": "columns-media",
+          "instances": [".standardbanners.stdbanner--red", ".textandmedia", ".acknowledgementofcountry"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "rc2",
+          "name": "Hero banner",
+          "selector": ".hero-home",
+          "style": null,
+          "blocks": ["hero-search"],
+          "defaultContent": []
+        },
+        {
+          "id": "rc3",
+          "name": "What would you like to study",
+          "selector": ".iconlistsvg",
+          "style": "light",
+          "blocks": ["cards-icons"],
+          "defaultContent": [".iconlistsvg__content > h3"]
+        },
+        {
+          "id": "rc4",
+          "name": "Reputation and stats",
+          "selector": ".iconfeature",
+          "style": "grey",
+          "blocks": ["cards-stats"],
+          "defaultContent": []
+        },
+        {
+          "id": "rc5",
+          "name": "Pathways feature cards",
+          "selector": ".generic-gridlist",
+          "style": "light",
+          "blocks": ["cards-feature"],
+          "defaultContent": []
+        },
+        {
+          "id": "rc6",
+          "name": "Local student applications",
+          "selector": ".standardbanners.stdbanner--red",
+          "style": "red-overlay",
+          "blocks": ["columns-media"],
+          "defaultContent": []
+        },
+        {
+          "id": "rc7",
+          "name": "In the news",
+          "selector": ".textandmedia",
+          "style": "news-media",
+          "blocks": ["columns-media"],
+          "defaultContent": [".section-title .h2"]
+        },
+        {
+          "id": "rc8",
+          "name": "Acknowledgement of Country",
+          "selector": ".acknowledgementofcountry",
+          "style": "acknowledgement",
+          "blocks": ["columns-media"],
+          "defaultContent": []
+        }
+      ]
+    }
+  ]
+}

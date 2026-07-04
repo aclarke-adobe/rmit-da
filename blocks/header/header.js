@@ -115,7 +115,7 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
+  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/content/nav';
   const fragment = await loadFragment(navPath);
 
   // decorate nav DOM
@@ -148,7 +148,34 @@ export default async function decorate(block) {
           navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
         }
       });
+      // open the mega-menu on hover (desktop), matching the source
+      navSection.addEventListener('mouseenter', () => {
+        if (isDesktop.matches && navSection.classList.contains('nav-drop')) {
+          toggleAllNavSections(navSections);
+          navSection.setAttribute('aria-expanded', 'true');
+        }
+      });
+      navSection.addEventListener('mouseleave', () => {
+        if (isDesktop.matches) navSection.setAttribute('aria-expanded', 'false');
+      });
     });
+  }
+
+  // build the search field in the utility (tools) row
+  const navTools = nav.querySelector('.nav-tools');
+  if (navTools) {
+    const search = document.createElement('div');
+    search.classList.add('nav-search');
+    search.innerHTML = `<form class="nav-search-form" action="https://www.rmit.edu.au/search" method="get" role="search">
+        <label class="nav-search-label" for="nav-search-input">Search</label>
+        <input id="nav-search-input" class="nav-search-input" type="text" name="search" placeholder="Search for courses, events, research, news" autocomplete="off">
+        <button class="nav-search-submit" type="submit" aria-label="Submit search">
+          <svg viewBox="0 0 22 22" width="20" height="20" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M20.6 19.2l-5.4-5.3c1-1.3 1.6-2.9 1.6-4.7C16.8 4.9 13.5 1.6 9.4 1.6S2 4.9 2 9.2s3.3 7.6 7.4 7.6c1.7 0 3.3-.6 4.5-1.6l5.4 5.3 1.3-1.3zM3.9 9.2c0-3 2.4-5.4 5.5-5.4s5.5 2.4 5.5 5.4-2.4 5.4-5.5 5.4-5.5-2.4-5.5-5.4z"></path>
+          </svg>
+        </button>
+      </form>`;
+    navTools.append(search);
   }
 
   // hamburger for mobile

@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://www.rmit.edu.au/",
+  "path": "index",
+  "timestamp": "2026-07-03T10:27:46.435Z",
+  "title": "RMIT University: A world leader in technology, design & enterprise",
+  "template": "homepage",
+  "blocks": [
+    "hero-search",
+    "cards-icons",
+    "cards-stats",
+    "cards-feature",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

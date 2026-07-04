@@ -1,0 +1,79 @@
+/* cards-stats — RMIT reputation / key-metric callout band.
+ * Values extracted from source .iconfeature computed styles:
+ *   layout: 3-column flex row (col-lg-4), text-align:center, item margin-bottom 52px
+ *   icon: figure/img 96x96, centered
+ *   stat h3: Arial(->Inter) 20px/24px, weight 500, navy rgb(0,0,84)
+ *   caption p: Arial(->Inter) 16px/26px, weight 400, #333
+ */
+
+/* container: rows flow as flex columns, wrapping */
+.cards-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  text-align: center;
+}
+
+/* each stat item (authored row) */
+.cards-stats .cards-stats-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* icon cell */
+.cards-stats .cards-stats-icon {
+  display: flex;
+  justify-content: center;
+  line-height: 0;
+}
+
+.cards-stats .cards-stats-icon picture,
+.cards-stats .cards-stats-icon img {
+  display: block;
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+}
+
+/* text cell */
+.cards-stats .cards-stats-body {
+  text-align: center;
+}
+
+/* stat number / label */
+.cards-stats .cards-stats-body h3 {
+  margin: 16px 0 0;
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--rmit-navy);
+}
+
+/* caption */
+.cards-stats .cards-stats-body p {
+  margin: 16px 0 0;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #333;
+}
+
+/* desktop: three columns in one row (source .row flex-wrap with col-lg-4) */
+@media (width >= 900px) {
+  .cards-stats {
+    flex-flow: row wrap;
+    align-items: flex-start;
+    gap: 0;
+    margin: 0 -12px;
+  }
+
+  .cards-stats .cards-stats-item {
+    box-sizing: border-box;
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+    padding: 0 12px;
+  }
+}

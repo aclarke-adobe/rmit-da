@@ -1,0 +1,237 @@
+/* Block: hero-search -- full-bleed hero banner with overlaid content.
+ * Visual values extracted from https://www.rmit.edu.au/ (.hero-home). */
+
+/* Full-bleed: escape the section content max-width. */
+.hero-search-container .hero-search-wrapper {
+  max-width: 100% !important;
+  padding: 0;
+}
+
+.hero-search {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 420px;
+  margin: 0;
+  padding: 24px;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* --- Background image (first row) --- */
+.hero-search .hero-search-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-search .hero-search-media > div {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-search picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-search picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Content overlay (last row) --- */
+.hero-search .hero-search-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1 1 1140px;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1140px;
+}
+
+/* Left column: headline + intro line. Right column: CTA buttons. */
+.hero-search .hero-search-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-search .hero-search-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-search h2 {
+  margin: 16px 0;
+  color: #fff;
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.hero-search .hero-search-left > p {
+  margin: 0;
+  color: #fff;
+  font-size: var(--body-font-size-s);
+  line-height: 24px;
+}
+
+/* --- CTA buttons (source: 131x50, white bg / navy text, Apply = red) --- */
+.hero-search .hero-search-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.hero-search a.hero-search-link:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 96px;
+  height: 50px;
+  margin: 0;
+  border: 0;
+  border-bottom: 4px solid var(--rmit-red);
+  border-radius: 0;
+  padding: 12px 12px 8px;
+  background-color: #fff;
+  color: var(--rmit-navy);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.hero-search a.hero-search-link:any-link:hover,
+.hero-search a.hero-search-link:any-link:focus-visible {
+  background-color: var(--rmit-grey);
+  color: var(--rmit-navy);
+}
+
+/* Final CTA (Apply) uses the RMIT red accent treatment. */
+.hero-search .hero-search-cta > a.hero-search-link:last-child:any-link {
+  background-color: var(--rmit-red);
+  color: #fff;
+}
+
+.hero-search .hero-search-cta > a.hero-search-link:last-child:any-link:hover,
+.hero-search .hero-search-cta > a.hero-search-link:last-child:any-link:focus-visible {
+  background-color: #b30020;
+  color: #fff;
+}
+
+/* --- Course search field (source: 48px tall, translucent black, white text,
+   1px grey border, submit icon pinned right) --- */
+.hero-search .hero-search-form {
+  position: relative;
+  width: 100%;
+  max-width: 570px;
+  margin-top: 24px;
+}
+
+.hero-search .hero-search-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.hero-search .hero-search-input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 48px;
+  padding: 0 68px 0 24px;
+  border: 1px solid #adb5bd;
+  border-radius: 24px;
+  background-color: rgb(0 0 0 / 60%);
+  color: #fff;
+  font-size: 16px;
+}
+
+.hero-search .hero-search-input::placeholder {
+  color: rgb(255 255 255 / 80%);
+}
+
+.hero-search .hero-search-submit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* No-image fallback: dark band so white text stays legible. */
+.hero-search.no-image {
+  background-color: var(--rmit-navy);
+}
+
+@media (width >= 900px) {
+  .hero-search {
+    min-height: 580px;
+    padding: 0 32px 48px;
+  }
+
+  /* Two-column layout: intro left, CTAs right — both anchored to the bottom.
+     Fixed 1140px content width (centered by the hero) to match the source. */
+  .hero-search .hero-search-content {
+    flex: 0 0 1140px;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 1140px;
+    gap: 0;
+  }
+
+  /* Left column fills remaining width so the content reaches 1140px; right
+     column is a fixed 570px stack of the CTA row + search field, aligned to
+     the bottom (matching the source). */
+  .hero-search .hero-search-left {
+    flex: 1 1 auto;
+  }
+
+  .hero-search .hero-search-right {
+    flex: 0 0 570px;
+    width: 570px;
+    align-items: stretch;
+  }
+
+  .hero-search h2 {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  /* CTA row: four equal buttons filling the 570px column width. */
+  .hero-search .hero-search-cta {
+    gap: 12px;
+    margin-top: 0;
+    flex-wrap: nowrap;
+  }
+
+  .hero-search a.hero-search-link:any-link {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 12px 12px 10px;
+  }
+}

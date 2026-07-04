@@ -10,63 +10,42 @@
  * governing permissions and limitations under the License.
  */
 
+@import url('brand.css');
+
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  /* colors (brand.css supplies --background-color, --text-color, --link-color,
+   * --link-hover-color, --light-color, --dark-color, --rmit-navy/red/grey) */
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: inter, inter-fallback, arial, sans-serif;
+  --heading-font-family: inter, inter-fallback, arial, sans-serif;
 
   /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  --body-font-size-m: 18px;
+  --body-font-size-s: 16px;
+  --body-font-size-xs: 14px;
 
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  /* heading sizes (mobile-first defaults) */
+  --heading-font-size-xxl: 40px;
+  --heading-font-size-xl: 34px;
+  --heading-font-size-l: 26px;
+  --heading-font-size-m: 22px;
+  --heading-font-size-s: 18px;
+  --heading-font-size-xs: 16px;
 
   /* nav height */
   --nav-height: 64px;
 }
 
-/* fallback fonts */
-@font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
-}
-
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
-}
-
 @media (width >= 900px) {
   :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
+    /* heading sizes (desktop — from brand.json) */
+    --heading-font-size-xxl: var(--heading-size-xxl);
+    --heading-font-size-xl: var(--heading-size-xl);
+    --heading-font-size-l: var(--heading-size-l);
+    --heading-font-size-m: var(--heading-size-m);
+    --heading-font-size-s: var(--heading-size-s);
+    --heading-font-size-xs: var(--heading-size-xs);
   }
 }
 
@@ -107,8 +86,9 @@ h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--rmit-navy);
   scroll-margin: 40px;
 }
 
@@ -179,10 +159,10 @@ button.button {
   max-width: 100%;
   margin: 0;
   border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  border-radius: 0;
+  padding: 0.75em 1.5em;
   font: inherit;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.25;
   text-decoration: none;
   cursor: pointer;
@@ -251,20 +231,21 @@ button.button.secondary:disabled:focus-visible {
   color: var(--dark-color);
 }
 
-/* high-impact call-to-action */
+/* high-impact call-to-action (RMIT red) */
 a.button.accent,
 button.button.accent {
-  border-color: var(--link-color);
-  background-color: var(--link-color);
-  color: var(--background-color);
+  border-color: var(--rmit-red);
+  background-color: var(--rmit-red);
+  color: #fff;
 }
 
 a.button.accent:hover,
 a.button.accent:focus-visible,
 button.button.accent:hover,
 button.button.accent:focus-visible {
-  border-color: var(--link-hover-color);
-  background-color: var(--link-hover-color);
+  border-color: #b30020;
+  background-color: #b30020;
+  color: #fff;
 }
 
 a.button.accent[aria-disabled="true"],
@@ -301,7 +282,7 @@ main > .section {
 }
 
 main > .section > div {
-  max-width: 1200px;
+  max-width: var(--content-max-width);
   margin: auto;
   padding: 0 24px;
 }
@@ -319,7 +300,64 @@ main > .section:first-of-type {
 /* section metadata */
 main .section.light,
 main .section.highlight {
-  background-color: var(--light-color);
+  background-color: #fff;
   margin: 0;
-  padding: 40px 0;
+  padding: 48px 0;
+}
+
+main .section.grey {
+  background-color: var(--rmit-grey);
+  margin: 0;
+  padding: 48px 0;
+}
+
+/* Red-overlay section (Local student applications): white background band;
+   the red text box is painted by the columns-media block itself as an overlay. */
+main .section.red-overlay {
+  background-color: #fff;
+  margin: 0;
+  padding: 48px 0;
+}
+
+/* In the news: white section band; the grey panel sits behind the text column
+   only (painted by the columns-media block). */
+main .section.news-media {
+  background-color: #fff;
+  margin: 0;
+  padding: 48px 0;
+}
+
+/* Acknowledgement of Country: full grey band. */
+main .section.acknowledgement {
+  background-color: var(--rmit-grey);
+  margin: 0;
+  padding: 48px 0;
+}
+
+main .section.accent-red {
+  background-color: var(--rmit-red);
+  color: #fff;
+  margin: 0;
+  padding: 48px 0;
+}
+
+main .section.accent-red h1,
+main .section.accent-red h2,
+main .section.accent-red h3,
+main .section.accent-red h4,
+main .section.accent-red h5,
+main .section.accent-red h6,
+main .section.accent-red a:any-link {
+  color: #fff;
+}
+
+/* Stats section: center the heading and the trailing CTA/footnote to match
+   the source (the cards-stats block already centers its own items). */
+main .section:has(.cards-stats) .default-content-wrapper {
+  text-align: center;
+}
+
+main .section:has(.cards-stats) .default-content-wrapper h2 {
+  max-width: 900px;
+  margin-inline: auto;
 }

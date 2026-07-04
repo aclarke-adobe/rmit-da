@@ -10,7 +10,37 @@ import {
   loadSections,
   loadCSS,
   buildBlock,
+  toClassName,
 } from './aem.js';
+
+/**
+ * Applies Section Metadata blocks as section classes/dataset.
+ * This project's aem.js decorateSections does not process `.section-metadata`,
+ * so we handle it here: read each block's key/value rows, add `style` values as
+ * section classes (and other keys to the section dataset), then remove the block.
+ * @param {Element} main The main element
+ */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll(':scope > .section .section-metadata').forEach((meta) => {
+    const section = meta.closest('.section');
+    [...meta.children].forEach((row) => {
+      if (row.children.length >= 2) {
+        const key = row.children[0].textContent.trim().toLowerCase();
+        const valueEl = row.children[1];
+        const value = valueEl.textContent.trim();
+        if (key === 'style') {
+          value.split(',').forEach((s) => {
+            const cls = toClassName(s.trim());
+            if (cls) section.classList.add(cls);
+          });
+        } else {
+          section.dataset[toClassName(key)] = value;
+        }
+      }
+    });
+    meta.remove();
+  });
+}
 
 /**
  * load fonts.css and set a session storage flag
@@ -126,6 +156,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionMetadata(main);
   decorateBlocks(main);
   decorateButtons(main);
 }

@@ -1,0 +1,115 @@
+/* Block: cards-feature -- pathways/transfer promo (source: .generic-gridlist) */
+
+.cards-feature > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.cards-feature > ul > li {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* image cell: cropped, fills the card width */
+.cards-feature .cards-feature-card-image {
+  line-height: 0;
+  overflow: hidden;
+}
+
+.cards-feature .cards-feature-card-image picture {
+  display: block;
+}
+
+.cards-feature .cards-feature-card-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 559 / 376;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* body cell */
+.cards-feature .cards-feature-card-body {
+  margin: 0;
+}
+
+.cards-feature .cards-feature-card-body h3 {
+  margin: 16px 0 8px;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--rmit-navy);
+}
+
+.cards-feature .cards-feature-card-body p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: rgb(51 51 51);
+}
+
+/* CTA link: the last paragraph in the body is the call-to-action.
+   Reset any EDS auto-button decoration into an RMIT text link. */
+.cards-feature .cards-feature-card-body p:last-child {
+  margin: 12px 0 0;
+}
+
+.cards-feature .cards-feature-card-body p:last-child a:any-link,
+.cards-feature .cards-feature-card-body a.button:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background-color: transparent;
+  color: var(--rmit-navy);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: normal;
+  overflow: visible;
+}
+
+.cards-feature .cards-feature-card-body p:last-child a:any-link::after,
+.cards-feature .cards-feature-card-body a.button:any-link::after {
+  content: '›';
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+.cards-feature .cards-feature-card-body p:last-child a:hover,
+.cards-feature .cards-feature-card-body p:last-child a:focus-visible,
+.cards-feature .cards-feature-card-body a.button:hover,
+.cards-feature .cards-feature-card-body a.button:focus-visible {
+  color: var(--rmit-red);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+/* subtle image zoom on hover (source figure.rollover has overflow:hidden) */
+.cards-feature > ul > li:hover .cards-feature-card-image img {
+  transform: scale(1.04);
+}
+
+/* desktop: two columns side by side with the source's ~2% gutter */
+@media (width >= 900px) {
+  .cards-feature > ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2%;
+  }
+}

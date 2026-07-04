@@ -1,0 +1,10 @@
+{
+  "type": "da",
+  "sites": {
+    "rmit-da": {
+      "previewOrg": "aclarke-adobe",
+      "previewSite": "rmit-da",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+    }
+  }
+}

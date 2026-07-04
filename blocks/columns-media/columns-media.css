@@ -1,0 +1,187 @@
+/* columns-media: two-column text + image layout (RMIT)
+ * Reads correctly on white, grey, and red section backgrounds.
+ * Colors are inherited so the accent-red section can flip text to white.
+ * Backgrounds are NOT set here — section-metadata (styles.css) owns them.
+ */
+
+.columns-media > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* image fills its cell, cover-cropped like the source */
+.columns-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* text cell first, image cell second in mobile stacking */
+.columns-media > div > div {
+  order: 1;
+}
+
+.columns-media > div > .columns-media-img-col {
+  order: 0;
+}
+
+/* typography — inherit color so red section turns text white */
+.columns-media h3 {
+  margin: 0 0 8px;
+  font-size: var(--heading-font-size-l);
+  font-weight: 500;
+  line-height: 1.17;
+  color: inherit;
+}
+
+.columns-media h4 {
+  margin: 0 0 8px;
+  font-size: var(--heading-font-size-m);
+  font-weight: 500;
+  line-height: 1.2;
+  color: inherit;
+}
+
+.columns-media p {
+  margin: 8px 0 16px;
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
+  color: inherit;
+}
+
+/* CTA is a plain text link (not a button), navy by default,
+ * white on the red section via the section rule in styles.css */
+.columns-media a:any-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  color: inherit;
+  text-decoration: none;
+}
+
+.columns-media a:hover {
+  text-decoration: underline;
+}
+
+/* small inline flag/badge images (Acknowledgement of Country) keep intrinsic
+ * size and do not stretch to the cell */
+.columns-media p img {
+  display: inline-block;
+  width: auto;
+  height: 32px;
+  border-radius: 4px;
+  object-fit: fill;
+}
+
+/* --- Red overlay "cut layout" (Local student applications) ---
+ * Source: large image with an absolutely-positioned red text box overlapping
+ * its bottom-right corner. Only applies inside a .red-overlay section. */
+.section.red-overlay .columns-media > div > div:not(.columns-media-img-col) {
+  background-color: var(--rmit-red);
+  color: #fff;
+}
+
+.section.red-overlay .columns-media h3,
+.section.red-overlay .columns-media h4,
+.section.red-overlay .columns-media p,
+.section.red-overlay .columns-media a:any-link {
+  color: #fff;
+}
+
+/* --- In the news: grey panel behind the text column only --- */
+.section.news-media .columns-media > div > div:not(.columns-media-img-col) {
+  background-color: var(--rmit-grey);
+}
+
+/* --- Acknowledgement of Country: the two flag paragraphs sit side by side.
+   Use block flow (not flex) on the text column so inline-block is honoured. --- */
+.section.acknowledgement .columns-media > div > div:not(.columns-media-img-col) {
+  display: block;
+}
+
+.section.acknowledgement .columns-media p:has(img) {
+  display: inline-block;
+  width: auto;
+  margin: 0 12px 8px 0;
+  vertical-align: middle;
+}
+
+@media (width >= 900px) {
+  .columns-media > div {
+    align-items: stretch;
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .columns-media > div > div {
+    flex: 0 0 50%;
+    width: 50%;
+    min-width: 0;
+    box-sizing: border-box;
+    order: 1;
+  }
+
+  /* image column on the left (matches source leftmedia layout), cover-cropped */
+  .columns-media > div > .columns-media-img-col {
+    flex: 0 0 50%;
+    width: 50%;
+    min-width: 0;
+    box-sizing: border-box;
+    align-self: stretch;
+    order: 0;
+    padding: 0;
+  }
+
+  .columns-media > div > .columns-media-img-col img {
+    height: 100%;
+    min-height: 100%;
+  }
+
+  /* text column: vertically centered with generous inner padding
+   * (source: content box padding 40px 0, inner 0 72px) */
+  .columns-media > div > div:not(.columns-media-img-col) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 72px;
+  }
+
+  /* Red overlay cut layout (desktop): 95%-wide image on the left, red text
+     box absolutely positioned over its lower-right, raised so it overlaps the
+     image (source: content box top 320px within a 522px image, extending below). */
+  .section.red-overlay .columns-media > div {
+    position: relative;
+    display: block;
+    min-height: 470px;
+  }
+
+  .section.red-overlay .columns-media > div > .columns-media-img-col {
+    width: 95%;
+    height: 420px;
+  }
+
+  .section.red-overlay .columns-media > div > .columns-media-img-col img {
+    height: 420px;
+  }
+
+  .section.red-overlay .columns-media > div > div:not(.columns-media-img-col) {
+    position: absolute;
+    top: 258px;
+    right: 0;
+    bottom: auto;
+    width: 46%;
+    padding: 40px 48px;
+  }
+
+  /* Acknowledgement of Country: image on the RIGHT, text on the left. */
+  .section.acknowledgement .columns-media > div > .columns-media-img-col {
+    order: 1;
+  }
+
+  .section.acknowledgement .columns-media > div > div:not(.columns-media-img-col) {
+    order: 0;
+  }
+}

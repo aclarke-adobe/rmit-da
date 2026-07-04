@@ -1,0 +1,38 @@
+{
+  "variantName": "cards-icons",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-07-03T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.rmit.edu.au/",
+    "originPage": "RMIT University homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "feature",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "dense grid of icon + short label link items",
+    "buttonCount": 0,
+    "imageCount": 20
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "study-area / category navigation grids",
+      "icon-driven quick-link directories",
+      "dense grids of short labelled links"
+    ],
+    "notSuitableFor": [
+      "cards with long descriptive text and large photos",
+      "two- or three-item feature promos"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-03T00:00:00.000Z"
+  }
+}
