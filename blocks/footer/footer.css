@@ -1,20 +1,154 @@
+/* RMIT footer — navy background, white text, multi-column link groups,
+ * legal row, and social icons. Design extracted from source .footer. */
+
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background-color: var(--rmit-navy);
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 14px;
 }
 
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+footer .footer {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 48px 24px 40px;
+}
+
+footer .footer a {
+  color: #fff;
+  text-decoration: none;
 }
 
 footer .footer p {
   margin: 0;
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+footer .footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* --- Brand / utility row --- */
+footer .footer-brand {
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgb(255 255 255 / 20%);
+}
+
+footer .footer-brand .default-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+footer .footer-brand img {
+  width: auto;
+  height: 40px;
+}
+
+footer .footer-brand ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
+footer .footer-brand a {
+  font-weight: 600;
+}
+
+/* --- Link-group columns --- */
+footer .footer-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  padding: 40px 0;
+}
+
+footer .footer-columns p {
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+footer .footer-columns p a {
+  font-weight: 600;
+}
+
+footer .footer-columns ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+footer .footer-columns ul a {
+  font-weight: 400;
+}
+
+/* --- Legal row + social --- */
+footer .footer-legal {
+  padding-top: 32px;
+  border-top: 1px solid rgb(255 255 255 / 20%);
+}
+
+footer .footer-legal .default-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* legal text items wrap horizontally with | separators */
+footer .footer-legal ul:first-of-type {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  align-items: center;
+  line-height: 1.6;
+}
+
+footer .footer-legal ul:first-of-type > li:not(:last-child)::after {
+  content: '|';
+  margin-left: 12px;
+  opacity: 0.5;
+}
+
+/* social icons row */
+footer .footer-legal ul:last-of-type {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+footer .footer-legal ul:last-of-type img {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+@media (width >= 600px) {
+  footer .footer-columns {
+    grid-template-columns: repeat(3, 1fr);
   }
+}
+
+@media (width >= 900px) {
+  footer .footer {
+    padding: 48px 32px 40px;
+  }
+
+  footer .footer-columns {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  footer .footer-legal .default-content-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  footer .footer-legal ul:last-of-type {
+    flex-shrink: 0;
+  }
+}
+
+footer .footer a:hover {
+  text-decoration: underline;
 }
