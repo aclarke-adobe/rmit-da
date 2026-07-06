@@ -1,0 +1,8 @@
+<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+             <style>.bio-1{fill:none;stroke:#28245f;stroke-miterlimit:10;stroke-width:2.34px;}.bio-2{fill:#e61e2a;}</style>
+            </defs>
+            <g data-name="Layer 2">
+             <path class="bio-1" d="M39.89,43.85c5,0,12.83-3.91,13.41-14.87S39.89,4,39.89,4s-14,14-13.4,25S34.85,43.85,39.89,43.85Z"></path><path class="bio-1" d="M52,51.27c-1.75-3-2.1-9.1,4.3-13.26S76,37.4,76,37.4,72.39,50.7,65.59,54.17,53.71,54.3,52,51.27Z"></path><path class="bio-1" d="M28,51.27c1.75-3,2.1-9.1-4.3-13.26S4,37.4,4,37.4,7.61,50.7,14.41,54.17,26.29,54.3,28,51.27Z"></path><line class="bio-1" x1="39.89" x2="39.89" y1="22" y2="70.46"></line><line class="bio-1" x1="16.36" x2="39.89" y1="44.12" y2="57.33"></line><line class="bio-1" x1="63.79" x2="40.25" y1="44.12" y2="57.33"></line><rect class="bio-2" x="38.94" y="73.39" width="2.44" height="2.58"></rect><rect class="bio-2" x="33.89" y="73.39" width="2.61" height="2.58"></rect><rect class="bio-2" transform="translate(-30.07 119.01) rotate(-89.37)" x="43.83" y="73.39" width="2.58" height="2.62"></rect>
+            </g>
+           </svg>

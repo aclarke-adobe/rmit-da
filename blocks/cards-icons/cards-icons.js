@@ -1,4 +1,4 @@
-const ICON_BASE = '/content/images/study-icons';
+const ICON_BASE = '/icons/study';
 
 // Study-area labels whose icon slug differs from a plain slug of the label.
 const ICON_SLUG_OVERRIDES = {
@@ -46,7 +46,7 @@ export default function decorate(block) {
   // Navy corner ribbon (bottom-right), matching the source.
   const ribbon = document.createElement('img');
   ribbon.className = 'cards-icons-ribbon';
-  ribbon.src = '/content/images/study-ribbon.svg';
+  ribbon.src = '/icons/study-ribbon.svg';
   ribbon.alt = '';
   ribbon.setAttribute('aria-hidden', 'true');
   ribbon.loading = 'lazy';
