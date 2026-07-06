@@ -26,5 +26,34 @@ export default async function decorate(block) {
     if (section) section.classList.add(cls);
   });
 
+  // Normalize the link columns. The published footer delivers them as a flat
+  // sequence of heading (<p>) + list (<ul>) pairs inside a single content
+  // wrapper, while nested authoring can wrap each group in its own div. Collect
+  // every heading/list in order and regroup each heading with its following
+  // lists into a .footer-column, so the CSS grid always has one child per
+  // column regardless of the source nesting.
+  const columns = footer.querySelector('.footer-columns');
+  if (columns) {
+    const items = [...columns.querySelectorAll('p, ul')];
+    const groups = [];
+    let current = null;
+    items.forEach((node) => {
+      if (node.tagName === 'P') {
+        current = document.createElement('div');
+        current.className = 'footer-column';
+        groups.push(current);
+        current.append(node);
+      } else if (current) {
+        current.append(node);
+      }
+    });
+    if (groups.length) {
+      const wrapper = columns.querySelector('.default-content-wrapper') || columns;
+      wrapper.textContent = '';
+      wrapper.append(...groups);
+      wrapper.classList.add('footer-columns-grid');
+    }
+  }
+
   block.append(footer);
 }

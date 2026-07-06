@@ -57,7 +57,7 @@ footer .footer-brand a {
 }
 
 /* --- Link-group columns --- */
-footer .footer-columns {
+footer .footer-columns-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 32px;
@@ -124,7 +124,7 @@ footer .footer-legal ul:last-of-type img {
 }
 
 @media (width >= 600px) {
-  footer .footer-columns {
+  footer .footer-columns-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -134,7 +134,7 @@ footer .footer-legal ul:last-of-type img {
     padding: 48px 32px 40px;
   }
 
-  footer .footer-columns {
+  footer .footer-columns-grid {
     grid-template-columns: repeat(5, 1fr);
   }
 
