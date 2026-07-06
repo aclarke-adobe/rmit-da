@@ -6,10 +6,16 @@ import { loadFragment } from '../fragment/fragment.js';
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  // load footer as fragment
+  // load footer as fragment. Try the local preview path (/content/footer) first,
+  // then fall back to the published root path (/footer).
   const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/content/footer';
-  const fragment = await loadFragment(footerPath);
+  let fragment;
+  if (footerMeta) {
+    fragment = await loadFragment(new URL(footerMeta, window.location).pathname);
+  } else {
+    fragment = await loadFragment('/content/footer') || await loadFragment('/footer');
+  }
+  if (!fragment) return;
 
   // decorate footer DOM
   block.textContent = '';
