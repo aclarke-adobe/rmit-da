@@ -113,15 +113,12 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
-  // load nav as fragment. Try the local preview path (/content/nav) first,
-  // then fall back to the published root path (/nav).
+  // load nav as fragment. Local preview serves the doc under /content;
+  // the published site serves it at the root.
   const navMeta = getMetadata('nav');
-  let fragment;
-  if (navMeta) {
-    fragment = await loadFragment(new URL(navMeta, window.location).pathname);
-  } else {
-    fragment = await loadFragment('/content/nav') || await loadFragment('/nav');
-  }
+  const defaultPath = window.location.hostname === 'localhost' ? '/content/nav' : '/nav';
+  const navPath = navMeta ? new URL(navMeta, window.location).pathname : defaultPath;
+  const fragment = await loadFragment(navPath);
   if (!fragment) return;
 
   // decorate nav DOM
